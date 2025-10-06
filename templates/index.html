@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAN Speed Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f7fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .result-box {
+            background: white;
+            padding: 20px 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        .metric {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .metric span {
+            font-weight: bold;
+            color: #0078d7;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            font-size: 1rem;
+            border: none;
+            background-color: #0078d7;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background-color: #005ea6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-center" style="font-family: sans-serif;">
+  <h1>⚡ LAN Speed Test</h1>
+
+  <div style="width: 250px; margin: 40px auto;">
+        <canvas id="speedGauge" width="250" height="125" style="display:block; margin:0 auto;"></canvas>
+  </div>
+
+    <!-- Progress bar: visual feedback from 0 -> measured speed -->
+    <div style="width: 300px; margin: 10px auto; text-align: left;">
+        <div id="gaugeProgressWrapper" style="background:#eee; height:14px; border-radius:8px; overflow:hidden;">
+            <div id="gaugeProgressFill" style="width:0%; height:100%; background:#00c853;"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-top:6px;">
+            <span>0</span>
+            <span id="gaugeProgressLabel">0 Mbps</span>
+            <span>100+</span>
+        </div>
+    </div>
+
+  <div id="results" class="result-box" style="margin-top: 30px;">
+    <p>Ping: <span id="ping">0</span> ms</p>
+    <p>Download: <span id="download">0</span> Mbps</p>
+    <p>Upload: <span id="upload">0</span> Mbps</p>
+  </div>
+
+  <button id="startBtn">Start Test</button>
+
+    <!-- Chart.js (required for the gauge). Loaded before speedtest.js so `Chart` is available. -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/speedtest.js') }}"></script>
+</body>
+</html>
