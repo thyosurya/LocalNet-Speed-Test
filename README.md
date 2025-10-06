@@ -28,7 +28,7 @@ Setup cepat (Windows PowerShell)
 1. Buka terminal di folder project:
 
 ```powershell
-cd "d:\development\local test network"
+cd "d:\development\LocalNet-Speed-test"
 ```
 
 2. Buat & aktifkan virtualenv (jika belum):
